@@ -1,0 +1,51 @@
+[
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "name": "Inspection",
+  "type_name": "Inspection"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "name": "Insurance",
+  "type_name": "Insurance"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "name": "Other",
+  "type_name": "Other"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "is_parking": 1,
+  "name": "Parking",
+  "type_name": "Parking"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "name": "Registration",
+  "type_name": "Registration"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Repair & Parts",
+  "name": "Repairs",
+  "type_name": "Repairs"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Repair & Parts",
+  "name": "Spare Parts",
+  "type_name": "Spare Parts"
+ },
+ {
+  "doctype": "Vehicle Expense Type",
+  "expense_category": "Other",
+  "name": "Transport",
+  "type_name": "Transport"
+ }
+]

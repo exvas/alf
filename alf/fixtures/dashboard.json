@@ -1,0 +1,67 @@
+[
+{
+  "cards": [
+   {
+    "card": "Total Vehicles in Stock"
+   },
+   {
+    "card": "Vehicles Reserved"
+   },
+   {
+    "card": "Vehicles Sold"
+   },
+   {
+    "card": "Stock Value"
+   },
+   {
+    "card": "Vehicles In Repair"
+   },
+   {
+    "card": "Vehicle Expenses"
+   },
+   {
+    "card": "Repair Cost (This Month)"
+   },
+   {
+    "card": "Active Reservations"
+   },
+   {
+    "card": "Open Sales Orders"
+   },
+   {
+    "card": "Vehicle Sales This Year"
+   }
+  ],
+  "charts": [
+   {
+    "chart": "Vehicle Status"
+   },
+   {
+    "chart": "Vehicle Profitability (Sold)"
+   },
+   {
+    "chart": "Vehicle Expenses by Type"
+   },
+   {
+    "chart": "Monthly Vehicle Expenses"
+   },
+   {
+    "chart": "Vehicle Sales (Invoiced)"
+   },
+   {
+    "chart": "Reserved Vehicles"
+   }
+  ],
+  "creation": "2026-10-17 10:00:00.000000",
+  "dashboard_name": "ALF Cars",
+  "doctype": "Dashboard",
+  "idx": 0,
+  "is_default": 1,
+  "is_standard": 0,
+  "modified": "2026-10-17 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Alf",
+  "name": "ALF Cars",
+  "owner": "Administrator"
+ }
+]
