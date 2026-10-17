@@ -1,0 +1,373 @@
+[
+{
+  "charts": [
+   {
+    "chart_name": "Vehicle Status",
+    "label": "Vehicle Status"
+   }
+  ],
+  "content": "[{\"id\": \"88f211b1bb\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Numbers</b></span>\", \"col\": 12}}, {\"id\": \"17b3e6af78\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Vehicles in Stock\", \"col\": 3}}, {\"id\": \"b71a5da93b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Vehicles Reserved\", \"col\": 3}}, {\"id\": \"95addae53e\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Vehicles Sold\", \"col\": 3}}, {\"id\": \"fbb6beb4e6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Stock Value\", \"col\": 3}}, {\"id\": \"6a33cb580f\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Vehicles In Repair\", \"col\": 3}}, {\"id\": \"ca578b32aa\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Vehicle Expenses\", \"col\": 3}}, {\"id\": \"e383b87f58\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Repair Cost (This Month)\", \"col\": 3}}, {\"id\": \"56b1db2ce4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Active Reservations\", \"col\": 3}}, {\"id\": \"f957e96459\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Sales Orders\", \"col\": 3}}, {\"id\": \"049a7d89c5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Vehicle Sales This Year\", \"col\": 3}}, {\"id\": \"9466946e53\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"9aafd180d8\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Charts</b></span>\", \"col\": 12}}, {\"id\": \"6cfbd152f5\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Vehicle Status\", \"col\": 6}}, {\"id\": \"305f347a65\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Vehicle Profitability (Sold)\", \"col\": 6}}, {\"id\": \"9c3eed77ed\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Vehicle Expenses by Type\", \"col\": 6}}, {\"id\": \"0c02d00eef\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Monthly Vehicle Expenses\", \"col\": 6}}, {\"id\": \"36e5b033b2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Vehicle Sales (Invoiced)\", \"col\": 6}}, {\"id\": \"8e890dd4ee\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Reserved Vehicles\", \"col\": 6}}, {\"id\": \"95002f0704\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"6930ddbc0a\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Access</b></span>\", \"col\": 12}}, {\"id\": \"8d010a8df7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Receipt\", \"col\": 3}}, {\"id\": \"3a83e660f4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle\", \"col\": 3}}, {\"id\": \"0e768708da\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Order\", \"col\": 3}}, {\"id\": \"972740d887\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Expense\", \"col\": 3}}, {\"id\": \"05654ebc86\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Reservation\", \"col\": 3}}, {\"id\": \"0ba70b5e09\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Profitability\", \"col\": 3}}, {\"id\": \"0397cb01f0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Invoice\", \"col\": 3}}, {\"id\": \"61e233414c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ALF Cars Dashboard\", \"col\": 3}}, {\"id\": \"3ca3cf410e\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"d0b686d7ab\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Inventory\", \"col\": 4}}, {\"id\": \"149d8171fd\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Sales\", \"col\": 4}}, {\"id\": \"70cda66cf3\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Expenses\", \"col\": 4}}, {\"id\": \"ea4944c945\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"618f8429b7\", \"type\": \"card\", \"data\": {\"card_name\": \"Stock Reservation\", \"col\": 4}}, {\"id\": \"a91101fc05\", \"type\": \"card\", \"data\": {\"card_name\": \"Settings\", \"col\": 4}}]",
+  "creation": "2026-10-17 10:00:00.000000",
+  "custom_blocks": [],
+  "doctype": "Workspace",
+  "for_user": null,
+  "hide_custom": 0,
+  "icon": "quality",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "ALF Cars",
+  "links": [
+   {
+    "hidden": 0,
+    "label": "Vehicle Inventory",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Vehicle",
+    "link_count": 0,
+    "link_to": "Vehicle",
+    "link_type": "DocType",
+    "onboard": 1,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Purchase Receipt",
+    "link_count": 0,
+    "link_to": "Purchase Receipt",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Item",
+    "link_count": 0,
+    "link_to": "Item",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Warehouse",
+    "link_count": 0,
+    "link_to": "Warehouse",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "label": "Vehicle Sales",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Sales Order",
+    "link_count": 0,
+    "link_to": "Sales Order",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Delivery Note",
+    "link_count": 0,
+    "link_to": "Delivery Note",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Sales Invoice",
+    "link_count": 0,
+    "link_to": "Sales Invoice",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Customer",
+    "link_count": 0,
+    "link_to": "Customer",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Payment Entry",
+    "link_count": 0,
+    "link_to": "Payment Entry",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "label": "Vehicle Expenses",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Vehicle Expense",
+    "link_count": 0,
+    "link_to": "Vehicle Expense",
+    "link_type": "DocType",
+    "onboard": 1,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Vehicle Expense Type",
+    "link_count": 0,
+    "link_to": "Vehicle Expense Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Journal Entry",
+    "link_count": 0,
+    "link_to": "Journal Entry",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Supplier",
+    "link_count": 0,
+    "link_to": "Supplier",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "label": "Reports",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Vehicle Reservation",
+    "link_count": 0,
+    "link_to": "Vehicle Reservation",
+    "link_type": "Report",
+    "onboard": 0,
+    "report_ref_doctype": "Vehicle Reservation",
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Vehicle Profitability",
+    "link_count": 0,
+    "link_to": "Vehicle Profitability",
+    "link_type": "Report",
+    "onboard": 0,
+    "report_ref_doctype": "Vehicle Profitability",
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "label": "Stock Reservation",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Stock Reservation Entry",
+    "link_count": 0,
+    "link_to": "Stock Reservation Entry",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Serial No",
+    "link_count": 0,
+    "link_to": "Serial No",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "label": "Settings",
+    "link_count": 0,
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Stock Settings",
+    "link_count": 0,
+    "link_to": "Stock Settings",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Company",
+    "link_count": 0,
+    "link_to": "Company",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Item Group",
+    "link_count": 0,
+    "link_to": "Item Group",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "UOM",
+    "link_count": 0,
+    "link_to": "UOM",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Vehicle Expense Type",
+    "link_count": 0,
+    "link_to": "Vehicle Expense Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   }
+  ],
+  "modified": "2026-10-17 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Alf",
+  "name": "ALF Cars",
+  "number_cards": [
+   {
+    "number_card_name": "Total Vehicles in Stock"
+   },
+   {
+    "number_card_name": "Vehicles Reserved"
+   },
+   {
+    "number_card_name": "Vehicles Sold"
+   },
+   {
+    "number_card_name": "Stock Value"
+   }
+  ],
+  "owner": "Administrator",
+  "parent_page": null,
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [],
+  "sequence_id": 1,
+  "shortcuts": [
+   {
+    "color": "#8D99A6",
+    "doc_view": "List",
+    "label": "Purchase Receipt",
+    "link_to": "Purchase Receipt",
+    "type": "DocType"
+   },
+   {
+    "color": "#29CD42",
+    "doc_view": "List",
+    "format": "{} In Stock",
+    "label": "Vehicle",
+    "link_to": "Vehicle",
+    "stats_filter": "{\"status\": [\"in\", [\"Purchased\", \"In Repair\", \"Ready for Sale\", \"Parked\"]]}",
+    "type": "DocType"
+   },
+   {
+    "color": "#FACF7B",
+    "doc_view": "List",
+    "format": "{} Booked",
+    "label": "Sales Order",
+    "link_to": "Sales Order",
+    "stats_filter": "{\"status\": [\"in\", [\"To Deliver and Bill\", \"To Deliver\"]]}",
+    "type": "DocType"
+   },
+   {
+    "color": "#FF8D00",
+    "doc_view": "List",
+    "format": "{} This Month",
+    "label": "Vehicle Expense",
+    "link_to": "Vehicle Expense",
+    "stats_filter": "{\"posting_date\": [\"Timespan\", \"this month\"]}",
+    "type": "DocType"
+   },
+   {
+    "label": "Vehicle Reservation",
+    "link_to": "Vehicle Reservation",
+    "report_ref_doctype": "Stock Reservation Entry",
+    "type": "Report"
+   },
+   {
+    "label": "Vehicle Profitability",
+    "link_to": "Vehicle Profitability",
+    "report_ref_doctype": "Vehicle",
+    "type": "Report"
+   },
+   {
+    "color": "#2490EF",
+    "doc_view": "List",
+    "label": "Sales Invoice",
+    "link_to": "Sales Invoice",
+    "type": "DocType"
+   },
+   {
+    "label": "ALF Cars Dashboard",
+    "link_to": "ALF Cars",
+    "type": "Dashboard"
+   }
+  ],
+  "title": "ALF Cars"
+ }
+]

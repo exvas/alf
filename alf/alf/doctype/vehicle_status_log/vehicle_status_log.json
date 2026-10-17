@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-17 09:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "posting_datetime",
+  "voucher_type",
+  "voucher_no",
+  "vehicle_reference",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Document",
+   "options": "voucher_type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vehicle_reference",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Vehicle",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-17 09:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Alf",
+ "name": "Vehicle Status Log",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

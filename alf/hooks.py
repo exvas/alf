@@ -44,6 +44,15 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Vehicle": "public/js/vehicle.js",
+	"Vehicle Expense": "public/js/vehicle_expense.js",
+	"Purchase Receipt": ["public/js/purchase_receipt.js", "public/js/vehicle_qty.js"],
+	"Purchase Invoice": "public/js/vehicle_qty.js",
+	"Sales Order": ["public/js/sales_order_item.js", "public/js/vehicle_qty.js"],
+	"Delivery Note": "public/js/vehicle_qty.js",
+	"Sales Invoice": ["public/js/sales_invoice.js", "public/js/vehicle_qty.js"],
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -137,13 +146,73 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Purchase Receipt": {
+		"validate": "alf.alf.events.validate_vehicle_qty",
+		"before_submit": "alf.alf.events.purchase_receipt_before_submit",
+		"on_submit": "alf.alf.events.purchase_receipt_on_submit",
+	},
+	"Purchase Invoice": {
+		"validate": [
+			"alf.alf.events.validate_vehicle_qty",
+			"alf.alf.events.set_vehicle_dimension",
+		],
+	},
+	"Sales Order": {
+		"validate": [
+			"alf.alf.events.validate_vehicle_qty",
+			"alf.alf.events.set_vehicle_dimension",
+		],
+	},
+	"Delivery Note": {
+		"validate": [
+			"alf.alf.events.validate_vehicle_qty",
+			"alf.alf.events.set_vehicle_dimension",
+		],
+		"on_submit": "alf.alf.events.delivery_note_on_submit",
+	},
+	"Stock Reservation Entry": {
+		"on_submit": "alf.alf.events.stock_reservation_entry_on_submit",
+		"on_cancel": "alf.alf.events.stock_reservation_entry_on_cancel",
+	},
+	"Stock Entry": {
+		"validate": "alf.alf.events.validate_vehicle_qty",
+	},
+	"Sales Invoice": {
+		"validate": [
+			"alf.alf.events.validate_vehicle_qty",
+			"alf.alf.events.set_vehicle_dimension",
+		],
+		"on_submit": "alf.alf.events.sales_invoice_on_submit",
+		"on_cancel": "alf.alf.events.sales_invoice_on_cancel",
+	},
+	"Vehicle Expense": {
+		"on_submit": "alf.alf.events.vehicle_expense_on_submit",
+		"on_cancel": "alf.alf.events.vehicle_expense_on_cancel",
+	},
+	"Vehicle": {
+		"validate": "alf.alf.events.vehicle_on_validate",
+	},
+	"Accounting Dimension": {
+		"validate": "alf.alf.events.accounting_dimension_on_validate",
+	},
+}
+
+# Fixtures
+# --------
+# Custom fields on ERPNext doctypes are declared in `alf/fixtures` so no core
+# ERPNext file is touched. The Sales Order Item script adds the `Vehicle` picker.
+
+fixtures = [
+	{"dt": "Custom Field", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Vehicle Expense Type"},
+	{"dt": "Number Card", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Dashboard Chart", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Dashboard", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Workspace", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Desktop Icon", "filters": [["module", "=", "Alf"]]},
+	{"dt": "Property Setter", "filters": [["module", "=", "Alf"]]},
+]
 
 # Scheduled Tasks
 # ---------------
@@ -165,6 +234,10 @@ app_license = "mit"
 # 		"alf.tasks.monthly"
 # 	],
 # }
+
+# Boot
+# ----
+boot_session = "alf.alf.boot.boot_session"
 
 # Testing
 # -------
@@ -246,4 +319,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

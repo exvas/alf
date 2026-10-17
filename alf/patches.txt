@@ -4,3 +4,8 @@
 
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
+alf.patches.v1_0.setup_vehicle_inventory
+alf.patches.v1_0.pin_alf_workspace
+alf.patches.v1_0.fix_address_contact_fields
+alf.patches.v1_0.stop_auto_serial_no
+alf.patches.v1_0.add_vehicle_accounting_dimension
