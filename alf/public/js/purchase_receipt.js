@@ -1,5 +1,21 @@
+const HIDDEN_FIELDS = [
+	"rejected_warehouse",
+	"is_subcontracted",
+	"supplier_warehouse",
+	"is_old_subcontracting_flow",
+	"subcontracting_receipt",
+	"raw_material_details",
+	"scan_barcode",
+	"shipping_rule",
+	"incoterm",
+	"project",
+	"cost_center",
+];
+
 frappe.ui.form.on("Purchase Receipt", {
 	refresh(frm) {
+		hide_fields(frm);
+
 		if (frm.doc.docstatus !== 0) {
 			return;
 		}
@@ -7,6 +23,14 @@ frappe.ui.form.on("Purchase Receipt", {
 		add_grid_vin_button(frm);
 	},
 });
+
+function hide_fields(frm) {
+	HIDDEN_FIELDS.forEach((fieldname) => {
+		if (frm.fields_dict[fieldname]) {
+			frm.set_df_property(fieldname, "hidden", 1);
+		}
+	});
+}
 
 function add_grid_vin_button(frm) {
 	const grid = frm.fields_dict.items && frm.fields_dict.items.grid;
