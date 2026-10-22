@@ -15,6 +15,36 @@ def get_vehicle_item_group():
 	return frappe.db.get_single_value("Stock Settings", "vehicle_item_group") or VEHICLE_ITEM_GROUP
 
 
+def get_vehicle_item_group_candidates(extra_item_codes=None):
+	"""Serial tracked items already used as vehicles on an existing document.
+
+	Only items that a Vehicle or a receipt line already references are returned,
+	so unrelated serial tracked stock is never pulled into the Vehicle Item Group.
+	"""
+	codes = set(code for code in (extra_item_codes or []) if code)
+
+	for doctype, field in (
+		("Vehicle", "item_code"),
+		("Purchase Receipt Item", "item_code"),
+		("Sales Invoice Item", "item_code"),
+	):
+		if not frappe.db.has_column(doctype, field):
+			continue
+		codes.update(
+			code for code in frappe.get_all(doctype, filters={field: ("is", "set")}, pluck=field) if code
+		)
+
+	group = get_vehicle_item_group()
+	return sorted(
+		row.name
+		for row in frappe.get_all(
+			"Item",
+			filters={"name": ("in", list(codes)), "item_group": ("!=", group), "has_serial_no": 1},
+			fields=["name"],
+		)
+	)
+
+
 def is_vehicle_item(item_code):
 	if not item_code:
 		return False

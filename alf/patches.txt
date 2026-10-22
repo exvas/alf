@@ -9,3 +9,4 @@ alf.patches.v1_0.pin_alf_workspace
 alf.patches.v1_0.fix_address_contact_fields
 alf.patches.v1_0.stop_auto_serial_no
 alf.patches.v1_0.add_vehicle_accounting_dimension
+alf.patches.v1_0.migrate_vehicle_items
