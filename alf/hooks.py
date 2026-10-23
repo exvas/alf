@@ -190,6 +190,9 @@ doc_events = {
 		"on_submit": "alf.alf.events.vehicle_expense_on_submit",
 		"on_cancel": "alf.alf.events.vehicle_expense_on_cancel",
 	},
+	"Item": {
+		"validate": "alf.alf.events.item_validate",
+	},
 	"Vehicle": {
 		"validate": "alf.alf.events.vehicle_on_validate",
 	},

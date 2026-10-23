@@ -10,7 +10,7 @@ Remove everything:  ... .cleanup
 """
 
 import frappe
-from frappe.utils import add_days, flt, nowdate
+from frappe.utils import add_days, cint, flt, nowdate
 
 COMPANY = "ALF Cars"
 ABBR = "AC"
@@ -90,8 +90,7 @@ def check(label, condition, detail=""):
 		print(f"  FAIL  {label} :: {detail}")
 
 
-def vehicle_name(vin):
-	return frappe.db.get_value("Vehicle", {"vin": vin})
+def vehicle_name(vin):	return frappe.db.get_value("Vehicle", {"vin": vin})
 
 
 def status_of(vin):
@@ -128,7 +127,10 @@ def run(keep=0):
 	print("\n=== STEP 8: reports ===")
 	test_reports()
 
-	print("\n=== STEP 9: cleanup ===")
+	print("\n=== STEP 9: vehicle item without serial tracking is repaired ===")
+	test_serial_tracking_fix()
+
+	print("\n=== STEP 10: cleanup ===")
 	if keep:
 		print(f"  KEPT  {len(CHECKS)} checks; data left on site for review")
 	else:
@@ -552,6 +554,107 @@ def test_trade_in():
 		"trade-in total cost recomputed",
 		flt(trade_in.total_cost) == 210000 + flt(trade_in.total_expense),
 		trade_in.total_cost,
+	)
+
+
+def test_serial_tracking_fix():
+	"""A vehicle Item created without `Has Serial No` must still produce a Vehicle.
+
+	That flag is what `is_vehicle_item` keys off, so an untracked vehicle item
+	used to slip through the whole lifecycle: no Vehicle, and the VIN stored as
+	free text with no `Serial No` behind it.
+	"""
+	from alf.patches.v1_0.fix_vehicle_serial_tracking import execute as fix
+
+	item_code = f"{TAG}-NOSERIAL"
+	vin = "ALFNOSERIAL01"
+
+	frappe.db.delete("Item", {"name": item_code})
+	existing_vehicle = vehicle_name(vin)
+	if existing_vehicle:
+		frappe.db.delete("Vehicle Status Log", {"parent": existing_vehicle})
+		frappe.db.delete("Vehicle", {"name": existing_vehicle})
+	frappe.db.delete("Serial No", {"name": vin})
+	item = frappe.get_doc(
+		{
+			"doctype": "Item",
+			"item_code": item_code,
+			"item_name": "No Serial Vehicle",
+			"item_group": "Vehicles",
+			"stock_uom": "Nos",
+			"is_stock_item": 1,
+			"has_serial_no": 0,
+			"gst_hsn_code": HSN_CODE,
+			"is_sales_item": 1,
+			"is_purchase_item": 1,
+		}
+	)
+	item.flags.ignore_permissions = True
+	item.flags.ignore_mandatory = True
+	item.insert()
+
+	# The item_validate hook is what stops this happening through the form.
+	check(
+		"vehicle item is forced to serial tracked",
+		cint(frappe.db.get_value("Item", item_code, "has_serial_no")) == 1,
+		frappe.db.get_value("Item", item_code, "has_serial_no"),
+	)
+
+	# Reproduce the pre-fix data: untracked item, receipt submitted without serials.
+	frappe.db.set_value("Item", item_code, "has_serial_no", 0, update_modified=False)
+
+	receipt = frappe.get_doc(
+		{
+			"doctype": "Purchase Receipt",
+			"company": COMPANY,
+			"supplier": ensure_supplier("ALF Full Test Seller"),
+			"posting_date": nowdate(),
+			"set_warehouse": "Stores - AC",
+			"items": [
+				{
+					"item_code": item_code,
+					"qty": 1,
+					"rate": 400000,
+					"warehouse": "Stores - AC",
+				}
+			],
+		}
+	)
+	receipt.flags.ignore_permissions = True
+	receipt.flags.ignore_mandatory = True
+	receipt.insert()
+	receipt.submit()
+
+	# Production stored the VIN as free text because the item was not tracked.
+	frappe.db.set_value(
+		"Purchase Receipt Item", receipt.items[0].name, "serial_no", vin, update_modified=False
+	)
+
+	check("untracked vehicle item created no Vehicle", not vehicle_name(vin), vehicle_name(vin))
+
+	fix()
+
+	check(
+		"fix enables serial tracking on the item",
+		cint(frappe.db.get_value("Item", item_code, "has_serial_no")) == 1,
+		frappe.db.get_value("Item", item_code, "has_serial_no"),
+	)
+	check("fix creates the missing Serial No", bool(frappe.db.exists("Serial No", vin)))
+	check("fix creates the missing Vehicle", bool(vehicle_name(vin)), vehicle_name(vin))
+	check(
+		"fix links the receipt row to the Vehicle",
+		frappe.db.get_value("Purchase Receipt Item", receipt.items[0].name, "vehicle") == vehicle_name(vin),
+		frappe.db.get_value("Purchase Receipt Item", receipt.items[0].name, "vehicle"),
+	)
+	check(
+		"fix links the Serial No to the Vehicle",
+		frappe.db.get_value("Serial No", vin, "vehicle") == vehicle_name(vin),
+		frappe.db.get_value("Serial No", vin, "vehicle"),
+	)
+	check(
+		"repaired Vehicle carries the purchase price",
+		flt(frappe.db.get_value("Vehicle", vehicle_name(vin), "purchase_price")) == 400000,
+		frappe.db.get_value("Vehicle", vehicle_name(vin), "purchase_price"),
 	)
 
 

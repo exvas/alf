@@ -515,3 +515,26 @@ def accounting_dimension_on_validate(doc, method=None):
 		)
 		if company:
 			doc.append("dimension_defaults", {"company": company, "mandatory_for_pl": 1})
+
+
+def item_validate(doc, method=None):
+	"""A vehicle item is identified by its VIN, so it has to be serial tracked.
+
+	`is_vehicle_item` decides whether a document row is a vehicle from the item
+	group plus `has_serial_no`. Creating a vehicle item without ticking
+	"Has Serial No" silently opts that car out of the whole lifecycle, so the
+	flag is enforced here instead of trusting the form.
+	"""
+	group = frappe.db.get_single_value("Stock Settings", "vehicle_item_group") or "Vehicles"
+
+	if doc.get("item_group") != group or cint(doc.get("has_serial_no")):
+		return
+
+	doc.has_serial_no = 1
+	frappe.msgprint(
+		_("Item {0} belongs to the {1} item group, so it is serial tracked. Serial No = VIN.").format(
+			frappe.bold(doc.get("item_code") or doc.get("item_name")), frappe.bold(group)
+		),
+		alert=True,
+		indicator="blue",
+	)
