@@ -90,7 +90,8 @@ def check(label, condition, detail=""):
 		print(f"  FAIL  {label} :: {detail}")
 
 
-def vehicle_name(vin):	return frappe.db.get_value("Vehicle", {"vin": vin})
+def vehicle_name(vin):
+	return frappe.db.get_value("Vehicle", {"vin": vin})
 
 
 def status_of(vin):
