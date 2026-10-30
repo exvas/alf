@@ -11,7 +11,16 @@ frappe.query_reports["Vehicle Profitability"] = {
 			fieldname: "status",
 			label: __("Vehicle Status"),
 			fieldtype: "Select",
-			options: ["", "Purchased", "In Repair", "Ready for Sale", "Parked", "Reserved", "Delivered", "Sold"],
+			options: [
+				"",
+				"Purchased",
+				"In Repair",
+				"Ready for Sale",
+				"Parked",
+				"Reserved",
+				"Delivered",
+				"Sold",
+			],
 		},
 		{
 			fieldname: "from_date",

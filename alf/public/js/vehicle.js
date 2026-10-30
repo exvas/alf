@@ -15,17 +15,33 @@ frappe.ui.form.on("Vehicle", {
 				__("Stock")
 			);
 			frm.add_custom_button(__("Mark Parked"), () => set_status(frm, "Parked"), __("Stock"));
-			frm.add_custom_button(__("Mark In Repair"), () => set_status(frm, "In Repair"), __("Stock"));
+			frm.add_custom_button(
+				__("Mark In Repair"),
+				() => set_status(frm, "In Repair"),
+				__("Stock")
+			);
 		}
 
 		if (frm.doc.sales_order) {
-			frm.add_custom_button(__("Sales Order"), () => frappe.set_route("Form", "Sales Order", frm.doc.sales_order), __("View"));
+			frm.add_custom_button(
+				__("Sales Order"),
+				() => frappe.set_route("Form", "Sales Order", frm.doc.sales_order),
+				__("View")
+			);
 		}
 		if (frm.doc.sales_invoice) {
-			frm.add_custom_button(__("Sales Invoice"), () => frappe.set_route("Form", "Sales Invoice", frm.doc.sales_invoice), __("View"));
+			frm.add_custom_button(
+				__("Sales Invoice"),
+				() => frappe.set_route("Form", "Sales Invoice", frm.doc.sales_invoice),
+				__("View")
+			);
 		}
 		if (frm.doc.purchase_receipt) {
-			frm.add_custom_button(__("Purchase Receipt"), () => frappe.set_route("Form", "Purchase Receipt", frm.doc.purchase_receipt), __("View"));
+			frm.add_custom_button(
+				__("Purchase Receipt"),
+				() => frappe.set_route("Form", "Purchase Receipt", frm.doc.purchase_receipt),
+				__("View")
+			);
 		}
 
 		if (frm.doc.status === "Reserved") {
