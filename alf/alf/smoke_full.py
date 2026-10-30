@@ -90,7 +90,8 @@ def check(label, condition, detail=""):
 		print(f"  FAIL  {label} :: {detail}")
 
 
-def vehicle_name(vin):	return frappe.db.get_value("Vehicle", {"vin": vin})
+def vehicle_name(vin):
+	return frappe.db.get_value("Vehicle", {"vin": vin})
 
 
 def status_of(vin):
@@ -720,7 +721,7 @@ def test_reports():
 		doc = frappe.get_doc("Number Card", card)
 		try:
 			value = get_result(frappe.as_json(doc), frappe.parse_json(doc.filters_json))
-			check(f"number card '{card}' evaluates", isinstance(value, (int, float)), value)
+			check(f"number card '{card}' evaluates", isinstance(value, (int, float)), value)  # noqa: UP038
 		except Exception as error:
 			check(f"number card '{card}' evaluates", False, error)
 

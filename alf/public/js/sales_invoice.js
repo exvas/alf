@@ -16,7 +16,11 @@ frappe.ui.form.on("Sales Invoice", {
 
 		frappe.db.get_doc("Vehicle", frm.doc.trade_in_vehicle).then((vehicle) => {
 			if (vehicle.status === "Sold") {
-				frappe.msgprint(__("Vehicle {0} is already sold and cannot be taken in as trade-in.", [vehicle.name]));
+				frappe.msgprint(
+					__("Vehicle {0} is already sold and cannot be taken in as trade-in.", [
+						vehicle.name,
+					])
+				);
 				frm.set_value("trade_in_vehicle", "");
 			}
 		});
@@ -24,7 +28,9 @@ frappe.ui.form.on("Sales Invoice", {
 
 	is_vehicle_booking(frm) {
 		if (frm.doc.is_vehicle_booking) {
-			frm.dashboard.set_headline(__("This invoice only records the vehicle booking / advance."));
+			frm.dashboard.set_headline(
+				__("This invoice only records the vehicle booking / advance.")
+			);
 		}
 	},
 });

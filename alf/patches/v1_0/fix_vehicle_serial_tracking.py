@@ -23,9 +23,7 @@ def enable_serial_tracking():
 	"""Vehicle items are identified by their VIN, so they are always serial tracked."""
 	group = get_vehicle_item_group()
 
-	for item_code in frappe.get_all(
-		"Item", filters={"item_group": group, "has_serial_no": 0}, pluck="name"
-	):
+	for item_code in frappe.get_all("Item", filters={"item_group": group, "has_serial_no": 0}, pluck="name"):
 		frappe.db.set_value("Item", item_code, "has_serial_no", 1, update_modified=False)
 
 

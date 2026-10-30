@@ -178,7 +178,10 @@ function apply_vins(frm, dialog, vins) {
 		frm.refresh_field("items");
 		frm.dirty();
 		dialog.hide();
-		frappe.show_alert({ message: __("VIN updated on {0} row(s).", [updates.length]), indicator: "green" });
+		frappe.show_alert({
+			message: __("VIN updated on {0} row(s).", [updates.length]),
+			indicator: "green",
+		});
 
 		if (problems.length) {
 			frappe.msgprint({

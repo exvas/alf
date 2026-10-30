@@ -681,9 +681,9 @@ def report():
 			sold_margin = flt(record["gross_profit"])
 
 	assert sold_margin > 0, "sold vehicle must show a profit"
-	assert not any(r["status"] == "Sold" and flt(r["selling_price"]) <= 0 for r in profit_rows), (
-		"sold vehicle must carry its actual selling price"
-	)
+	assert not any(
+		r["status"] == "Sold" and flt(r["selling_price"]) <= 0 for r in profit_rows
+	), "sold vehicle must carry its actual selling price"
 
 	columns, data = vehicle_reservation.execute(filters)
 	print("\n=== VEHICLE RESERVATION REPORT ===")
