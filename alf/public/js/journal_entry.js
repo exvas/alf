@@ -17,7 +17,12 @@ alf.journal_entry.set_account_balances = function (frm, rows) {
 		callback(r) {
 			const balances = r.message || {};
 			rows.forEach((row) => {
-				frappe.model.set_value(row.doctype, row.name, "account_balance", balances[row.account] || 0);
+				frappe.model.set_value(
+					row.doctype,
+					row.name,
+					"account_balance",
+					balances[row.account] || 0
+				);
 			});
 		},
 	});
