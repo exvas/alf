@@ -1325,5 +1325,21 @@
   "property": "hidden",
   "property_type": "Check",
   "value": "1"
+ },
+{
+  "creation": "2026-11-05 10:00:00.000000",
+  "doc_type": "Journal Entry Account",
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "party_type",
+  "idx": 0,
+  "modified": "2026-11-05 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Alf",
+  "name": "Journal Entry Account-party_type-columns",
+  "owner": "Administrator",
+  "property": "columns",
+  "property_type": "Int",
+  "value": "1"
  }
 ]

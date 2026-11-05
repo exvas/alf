@@ -811,5 +811,28 @@
   "name": "Stock Settings-vehicle_item_group",
   "options": "Item Group",
   "owner": "Administrator"
+ },
+{
+  "allow_on_submit": 0,
+  "columns": 1,
+  "creation": "2026-11-05 10:00:00.000000",
+  "description": "Ledger balance as on the posting date (in account currency).",
+  "doctype": "Custom Field",
+  "dt": "Journal Entry Account",
+  "fieldname": "account_balance",
+  "fieldtype": "Currency",
+  "idx": 0,
+  "in_list_view": 1,
+  "insert_after": "account",
+  "label": "Balance",
+  "modified": "2026-11-05 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Alf",
+  "name": "Journal Entry Account-account_balance",
+  "no_copy": 1,
+  "options": "account_currency",
+  "owner": "Administrator",
+  "print_hide": 1,
+  "read_only": 1
  }
 ]

@@ -52,6 +52,7 @@ doctype_js = {
 	"Sales Order": ["public/js/sales_order_item.js", "public/js/vehicle_qty.js"],
 	"Delivery Note": "public/js/vehicle_qty.js",
 	"Sales Invoice": ["public/js/sales_invoice.js", "public/js/vehicle_qty.js"],
+	"Journal Entry": "public/js/journal_entry.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
