@@ -256,6 +256,47 @@ def stock_reservation_entry_on_cancel(doc, method=None):
 	)
 
 
+def set_vehicle_serial_no(doc, method=None):
+	"""Serial No = VIN, so fill it from the row's Vehicle.
+
+	Runs on `before_validate`: ERPNext builds the Serial and Batch Bundle from the
+	row's `serial_no` inside the document's own `validate`, before `validate` hooks
+	run. Without this a row that only names its Vehicle fails with
+	"Serial No / Batch No are mandatory".
+	"""
+	if doc.doctype == "Sales Invoice" and not cint(doc.get("update_stock")):
+		return
+
+	for row in doc.get("items") or []:
+		if row.get("serial_no") or row.get("serial_and_batch_bundle"):
+			continue
+		if not is_vehicle_item(row.item_code):
+			continue
+
+		vehicle = row.get("vehicle")
+		if not vehicle and row.get("so_detail"):
+			vehicle = frappe.db.get_value("Sales Order Item", row.so_detail, "vehicle")
+
+		if not vehicle:
+			frappe.throw(
+				_("Row #{0}: select the Vehicle for {1} so its VIN (Serial No) can be delivered.").format(
+					row.idx, frappe.bold(row.item_code)
+				),
+				title=_("Vehicle Required"),
+			)
+
+		vin = frappe.db.get_value("Vehicle", vehicle, "serial_no")
+		if not vin:
+			frappe.throw(
+				_("Row #{0}: Vehicle {1} has no VIN (Serial No).").format(row.idx, frappe.bold(vehicle)),
+				title=_("Vehicle Required"),
+			)
+
+		row.vehicle = vehicle
+		row.serial_no = vin
+		row.use_serial_batch_fields = 1
+
+
 def delivery_note_on_submit(doc, method=None):
 	"""The vehicle left the yard; invoicing may still follow."""
 	for row in doc.items:

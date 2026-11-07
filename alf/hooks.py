@@ -166,6 +166,7 @@ doc_events = {
 		],
 	},
 	"Delivery Note": {
+		"before_validate": "alf.alf.events.set_vehicle_serial_no",
 		"validate": [
 			"alf.alf.events.validate_vehicle_qty",
 			"alf.alf.events.set_vehicle_dimension",
@@ -180,6 +181,7 @@ doc_events = {
 		"validate": "alf.alf.events.validate_vehicle_qty",
 	},
 	"Sales Invoice": {
+		"before_validate": "alf.alf.events.set_vehicle_serial_no",
 		"validate": [
 			"alf.alf.events.validate_vehicle_qty",
 			"alf.alf.events.set_vehicle_dimension",

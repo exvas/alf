@@ -53,6 +53,7 @@ def create_missing_serials():
 					"item_code": row.item_code,
 					"status": "Active",
 					"purchase_rate": row.rate,
+					"company": row.company,
 				}
 			)
 			serial.flags.ignore_permissions = True

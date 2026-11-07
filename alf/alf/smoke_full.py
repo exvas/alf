@@ -658,6 +658,47 @@ def test_serial_tracking_fix():
 		frappe.db.get_value("Vehicle", vehicle_name(vin), "purchase_price"),
 	)
 
+	# Production: the first repair left the Serial No without a warehouse, and the
+	# Delivery Note row only named the Vehicle (ALF-DN-26-0005).
+	from alf.patches.v1_0.set_vehicle_serial_warehouse import execute as fix_warehouse
+
+	frappe.db.set_value("Serial No", vin, "warehouse", None, update_modified=False)
+	fix_warehouse()
+	check(
+		"repaired Serial No sits in the receipt warehouse",
+		frappe.db.get_value("Serial No", vin, "warehouse") == "Stores - AC",
+		frappe.db.get_value("Serial No", vin, "warehouse"),
+	)
+
+	dn = frappe.get_doc(
+		{
+			"doctype": "Delivery Note",
+			"company": COMPANY,
+			"customer": ensure_customer("ALF Full Test Buyer"),
+			"posting_date": nowdate(),
+			"items": [
+				{
+					"item_code": item_code,
+					"qty": 1,
+					"rate": 450000,
+					"warehouse": "Stores - AC",
+					"vehicle": vehicle_name(vin),
+				}
+			],
+		}
+	)
+	dn.flags.ignore_permissions = True
+	dn.insert()
+	check("delivery note fills the VIN from the Vehicle", dn.items[0].serial_no == vin, dn.items[0].serial_no)
+	dn.submit()
+	check(
+		"repaired vehicle can be delivered",
+		frappe.db.get_value("Serial No", vin, "status") == "Delivered"
+		or not frappe.db.get_value("Serial No", vin, "warehouse"),
+		frappe.db.get_value("Serial No", vin, ["status", "warehouse"]),
+	)
+	dn.cancel()
+
 
 def test_booking_invoice():
 	name = vehicle_name(PRIMARY["vin"])
@@ -837,7 +878,14 @@ def cleanup(quiet=0):
 
 	customers = [
 		n
-		for n in ("Anil Thomas", "Meera Krishnan", "Rahul Pillai", "Suresh Babu", "Priya Nair")
+		for n in (
+			"Anil Thomas",
+			"Meera Krishnan",
+			"Rahul Pillai",
+			"Suresh Babu",
+			"Priya Nair",
+			"ALF Full Test Buyer",
+		)
 		if frappe.db.exists("Customer", {"customer_name": n})
 	]
 	customers = [frappe.db.get_value("Customer", {"customer_name": n}) for n in customers]
